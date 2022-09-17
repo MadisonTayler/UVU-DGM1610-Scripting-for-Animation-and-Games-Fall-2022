@@ -1,0 +1,42 @@
+using System;
+
+namespace MyApplication
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      string name = "Tayler";
+      Console.WriteLine("Madison "+name); 
+      int myAge = 19;
+      Console.WriteLine(myAge+"yo");
+      int thisYear;
+      thisYear = 2022;
+      Console.WriteLine(thisYear);
+      const int birthYear = 2003;
+      int x = 10, y = 20, z = 5;
+      Console.WriteLine(x - z + y);
+      string stateName = "Utah ";
+      string cityName = "Orem, ";
+      string countryName = "USA";
+      string locationName = cityName + stateName + countryName;
+      Console.WriteLine(locationName);
+      int minutes = 59;
+      int hours = 23;
+      Console.WriteLine(hours + ":" + minutes);
+      double numberPi = 3.14D;
+      Console.WriteLine(numberPi);
+      float myDollars = 24.68F;
+      Console.WriteLine(myDollars);
+      bool isThisInfoCorrect = false;
+      bool isThisYou = true;
+      Console.WriteLine(isThisInfoCorrect);
+      Console.WriteLine(isThisYou);
+      char myFutureGrade = 'A';
+      char passOrFail = 'P';
+      Console.WriteLine(myFutureGrade);
+      Console.WriteLine(passOrFail);
+     
+    }
+  }
+}
