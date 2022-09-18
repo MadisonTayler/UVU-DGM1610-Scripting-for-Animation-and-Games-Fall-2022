@@ -10,10 +10,13 @@ public class FloatUp : MonoBehaviour
 
     private Balloon balloon; // References the balloon gameobject
 
+    private ScoreManager scoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
       balloon = GetComponent<Balloon>();  
+      scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class FloatUp : MonoBehaviour
         // Destroy balloon if it passes the top boundary/threshold
         if(transform.position.y > upperBound)
         {
+            scoreManager.DecreaseScoreText(balloon.scoreToGive);
             Destroy(gameObject);
         }
     }
