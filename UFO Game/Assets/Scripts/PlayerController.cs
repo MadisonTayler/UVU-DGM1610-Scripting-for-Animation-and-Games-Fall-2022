@@ -11,12 +11,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject lazerBolt; // GameOBject projectile to shoot
     public Transform blaster; // Point of origin for the lazerBolt
-
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); // Reference GameManager script
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
        }
 
-       if(Input.GetKeyDown(KeyCode.Space))
+       if(Input.GetKeyDown(KeyCode.Space) && gameManager.isGameOver == false) // Second condition gameManager prevents player from shooting after game is over
        {
           Instantiate(lazerBolt, blaster.transform.position, lazerBolt.transform.rotation); // Instantiate laserBolt GameObject at blaster position
        }
