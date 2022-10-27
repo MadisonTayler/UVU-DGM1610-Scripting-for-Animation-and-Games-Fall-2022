@@ -437,6 +437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreToGive: 10
+  explosionParticle: {fileID: 1910808806940766826, guid: 6c4776a3ff2f3584a90f9fbe0a8dbe3c, type: 3}
+  explosion: {fileID: 4349754424707526184, guid: 6c4776a3ff2f3584a90f9fbe0a8dbe3c, type: 3}
+  explosionSize: {x: 1, y: 1, z: 1}
 --- !u!114 &6695421331727599648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,3 +454,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBounds: 30
   lowerBounds: -10
+  gameManager: {fileID: 0}
