@@ -14,7 +14,7 @@ public class PlayerController2D : MonoBehaviour
 
     // Player rigidbody
     private Rigidbody2D rb;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     // Player jump
     private bool isGrounded = true;

@@ -12,7 +12,15 @@ public class MagicBlast : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // References the rigidbody2D component
-        rb.velocity = transform.right * speed; // Adds velocity and makes the gameObject move forward
+        PlayerController2D player = GameObject.Find("Player").GetComponent<PlayerController2D>();
+        if(player.isFacingRight)
+        {
+            rb.velocity = transform.right * speed; // Adds velocity and makes the gameObject move forward to the right
+        }
+        else
+        {
+            rb.velocity = transform.right * -1 * speed; // Adds velocity and makes the gameObject move forward to the left
+        }
     }
 
     // Detect any collisions and triggers
