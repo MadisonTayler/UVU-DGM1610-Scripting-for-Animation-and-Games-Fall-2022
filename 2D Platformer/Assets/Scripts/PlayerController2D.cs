@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
+    // Player inventory
+    public int inventory;
+    
     // Player stats
     public float speed;
     public float jumpForce;
@@ -25,6 +28,7 @@ public class PlayerController2D : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        inventory = 0;
     }
 
     // Fixed update is called a fixed or set number of frames. This works best with physics based movement
