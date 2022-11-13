@@ -6,21 +6,23 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
     public int currentHealth;
-    public float deathDelay;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         currentHealth = maxHealth;
     }
 
     public void TakeDamage(int dmgAmount)
     {
         currentHealth -= dmgAmount;
-        
+        Debug.Log("Player Health = "+ currentHealth);
+
         if(currentHealth <= 0)
         {
-            Destroy(gameObject,deathDelay);
+            Debug.Log("You died! Game Over");
+            Time.timeScale = 0; // Freeze the game
         }
     }
 
@@ -32,13 +34,5 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
