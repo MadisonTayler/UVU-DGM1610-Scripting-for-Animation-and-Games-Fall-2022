@@ -4,29 +4,70 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Movement")]
-    public float moveSpeed;
-    public float jumpForce;
+    [Header("Stats")]
+    public float moveSpeed; // Movement speed in units per second
+    public float jumpForce; // Force applied upwards
+    public int curHp;
+    public int maxHp;
+
     [Header("Camera")]
-    public float lookSensitivity;
-    public float maxLookX;
-    public float minLookX;
-    // Private variables
-    private float rotX;
+    public float lookSensitivity; // Mouse look sensitivity
+    public float maxLookX; // Lowest down we can look
+    public float minLookX; // Highest up we can look
+    // Private variables 
+    private float rotX; // Current x rotation of the camera
     private Camera camera;
     private Rigidbody rb;
+    // private Weapon weapon;
 
     void Awake()
     {
-        // Get componenets
-        camera = Camera.main;
-        rb = GetComponent<Rigidbody>();
+        // weapon = GetComponent<Weapon>();
     } 
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get componenets
+        camera = Camera.main;
+        rb = GetComponent<Rigidbody>();
+
+        /* Initialize the UI
+        GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        GameUI.instance.UpdateScoreText(0);
+        GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
+        */
+    }
+
+    //Applies damage to the player
+    public void TakeDamage(int damage)
+    {
+        curHp -= damage;
         
+        if(curHp <= 0)
+            Die();
+
+        // GameUI.instance.UpdateHealthBar(curHp, maxHp);
+    }
+
+    void Die()
+    {
+        // GameManager.instance.LoseGame();
+        Debug.Log("Player has died! Game over!");
+    }
+
+    public void GiveHealth(int amountToGive)
+    {
+        // curHp = Mathf.Clamp(curHp + amountToGive, 0, maxHp);
+        // GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        Debug.Log("Player has been healed!");
+    }
+
+    public void GiveAmmo(int amountToGive)
+    {
+        // weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
+        // GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
+        Debug.Log("Player has gained ammo!");
     }
 
     // Update is called once per frame
@@ -35,10 +76,26 @@ public class PlayerController : MonoBehaviour
         Move();
         CameraLook();
 
+        /*
+        // Fire button
+        if(Input.GetButton("Fire1"))
+        {
+            if(weapon.CanShoot())
+                weapon.Shoot();
+        }
+        */
+
+        // Jump button
         if(Input.GetButtonDown("Jump"))
         {
             Jump();
         }
+
+        /*
+        // Don't do anything if the game is paused
+        if(GameManager.instance.gamePaused == true)
+            return;
+        */
     }
 
     void Move()
