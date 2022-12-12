@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         // weapon = GetComponent<Weapon>();
+        curHp = maxHp;
     } 
 
     // Start is called before the first frame update
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         // GameManager.instance.LoseGame();
         Debug.Log("Player has died! Game over!");
+        Time.timeScale = 0;
     }
 
     public void GiveHealth(int amountToGive)
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         // weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
         // GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
-        Debug.Log("Player has gained ammo!");
+        Debug.Log("Player has collected ammo!");
     }
 
     // Update is called once per frame
@@ -106,7 +108,6 @@ public class PlayerController : MonoBehaviour
         // Walk in the direction you're looking/facing
         Vector3 dir = (transform.right * x) + (transform.forward * z);
         dir.y = rb.velocity.y;
-
         rb.velocity = dir; // Drives movement relative to the camera's look direction
     }
 

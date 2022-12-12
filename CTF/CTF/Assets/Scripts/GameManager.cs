@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     void WinGame()
     {
         Debug.Log("You've won!");
-        // Time.timeScale = 0; // Freeze the game
+        Time.timeScale = 0; // Freeze the game
         // Show win screen
         // GameUI.instance.SetEndGameScreen(true, curScore);
     }
